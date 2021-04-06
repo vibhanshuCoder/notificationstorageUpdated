@@ -25,7 +25,7 @@ import java.util.Date;
 @Getter
 @Setter
 @Entity
-public class Notification {
+public class NotificationEntity {
 
     enum NotificationType {
         SMS, EMAIL
