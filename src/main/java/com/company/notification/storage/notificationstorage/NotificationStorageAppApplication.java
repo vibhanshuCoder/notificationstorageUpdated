@@ -1,14 +1,14 @@
 package com.company.notification.storage.notificationstorage;
-import com.company.notification.storage.notificationstorage.userdao.UserRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+//import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-@EnableMongoRepositories(basePackageClasses = UserRepository.class)
 @SpringBootApplication
-public class NotificationStorageAppApplication {
-
-    public static void main(String[] args) {
+//@EnableSwagger2
+public class NotificationStorageAppApplication
+{
+    public static void main(String[] args)
+    {
         SpringApplication.run(NotificationStorageAppApplication.class, args);
     }
 

@@ -1,30 +1,30 @@
 package com.company.notification.storage.notificationstorage.entities;
-
-import jdk.nashorn.internal.objects.annotations.Constructor;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.mongodb.core.index.Indexed;
-import org.springframework.data.mongodb.core.mapping.Document;
-import javax.persistence.Entity;
-import javax.persistence.Id;
 
-@Document(collection = "User")
+import javax.persistence.*;
+
+
 @Getter
 @Setter
+@Table(name = "user_info")
 @Entity
 public class UserEntity {
 
     @Id
-    @Indexed(useGeneratedName = true)
-    private String id;
-    @Indexed(name = "name")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "user_id")
+    private Integer id;
+    @Column(name = "name",nullable = false)
     private String name;
-    @Indexed(name = "email")
+    @Column(name = "email",nullable = false)
     private String email;
-    @Indexed(name = "phone")
+    @Column(name = "phone",nullable = false)
     private String phone;
+//    @OneToMany
+//    private NotificationEntity notificationEntity;
 
-    public UserEntity(String id, String name, String email, String phone) {
+    public UserEntity(Integer id, String name, String email, String phone) {
         this.id = id;
         this.name = name;
         this.email = email;
