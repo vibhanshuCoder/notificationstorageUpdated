@@ -5,6 +5,8 @@ import com.company.notification.storage.notificationstorage.userdao.UserReposito
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserServices {
 
@@ -13,8 +15,17 @@ public class UserServices {
     @Autowired
     private NotificationRepository notificationRepository;
 
+
     public UserEntity createUser(UserEntity user)
     {
         return userRepository.save(user);
+    }
+
+    public Iterable<UserEntity> allUsers() {
+        return userRepository.findAll();
+    }
+
+    public UserEntity userById(Integer userId) {
+        return userRepository.findById(userId).get();
     }
 }

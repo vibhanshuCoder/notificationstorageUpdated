@@ -5,8 +5,10 @@ import com.company.notification.storage.notificationstorage.services.UserService
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/api/users")
 public class UserController
 {
     @Autowired
@@ -18,5 +20,16 @@ public class UserController
     public UserEntity createUser(@RequestBody UserEntity user)
     {
         return userServices.createUser(user);
+    }
+
+    @GetMapping("/allUsers")
+    public Iterable<UserEntity> allUsers()
+    {
+        return userServices.allUsers();
+    }
+    @GetMapping(value = "/user",params ={"userId"} )
+    public UserEntity userById(@RequestParam("userId")Integer userId)
+    {
+        return userServices.userById(userId);
     }
 }
