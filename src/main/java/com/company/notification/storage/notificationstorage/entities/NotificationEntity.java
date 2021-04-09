@@ -1,7 +1,7 @@
 package com.company.notification.storage.notificationstorage.entities;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -23,52 +23,55 @@ import java.util.Date;
 @Table(name = "notification")
 public class NotificationEntity {
 
-//    %enum%
-    enum NotificationType {
+    //    %enum%
+    public enum NotificationType {
         SMS, EMAIL
     }
-//    %id%
+
+    //    %id-userId%
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "notification_id")
     private Integer id;
-//    %date-notifytime%
-    @Column(name = "notify_time",nullable = false)
-    private Date notifyTime =new Date();
-//    %date-dateCreated%
-    @Column(name = "date_created",nullable = false)
+    //    %date-notifytime%
+    @Column(name = "notify_time", nullable = false)
+    private Date notifyTime = new Date();
+    //    %date-dateCreated%
+    @Column(name = "date_created", nullable = false)
     private LocalDateTime dateCreated = LocalDateTime.now();
-//    %notificationType - enum%
+    //    %notificationType - enum%
     @Column(name = "notification_type")
     private NotificationType notificationtype;
-//    %date-lastupdated%
-    @Column(name = "last_updated",nullable=false)
+    //    %date-lastupdated%
+    @Column(name = "last_updated", nullable = false)
     private Date lastUpdated = new Date();
-//    %boolean-enable%
+    //    %boolean-enable%
     @Column(name = "enable")
     private boolean enable;
-//    %boolean - isSent%
+    //    %boolean - isSent%
     @Column(name = "is_sent")
     private boolean isSent;
-//    %boolean-isRepeate%
+    //    %boolean-isRepeate%
     @Column(name = "is_repeate")
     private boolean isReapeat;
-//    %user-userEntity%
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "notification_mapped",referencedColumnName = "user_id")
-    private UserEntity userEntity;
-    public NotificationEntity() {
-    }
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "user_id")
+    private UserEntity user;
+//    @ManyToOne
+//    @JoinColumn(name = "usermapped")
+//    private UserEntity userEntity;
+
+}
+
     /*
     userEntity
-isReapeat
-isSent
-enable
-lastUpdated
-notificationtype
-dateCreated
-notifyTime
-id
+    isReapeat
+    isSent
+    enable
+    lastUpdated
+    notificationtype
+    dateCreated
+    notifyTime
+    id
     */
-}
