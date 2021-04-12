@@ -3,10 +3,11 @@ import com.company.notification.storage.notificationstorage.dao.NotificationRepo
 import com.company.notification.storage.notificationstorage.entities.NotificationEntity;
 import com.company.notification.storage.notificationstorage.entities.UserEntity;
 import com.company.notification.storage.notificationstorage.request.NotificationRequest;
-import com.company.notification.storage.notificationstorage.response.NotificationResponse;
-import com.company.notification.storage.notificationstorage.userdao.UserRepository;
+import com.company.notification.storage.notificationstorage.dao.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class NotificationServices
@@ -28,5 +29,17 @@ public class NotificationServices
     public Iterable<NotificationEntity> allNotifications(){
         Iterable<NotificationEntity> noti = notificationRepository.findAll();
         return noti;
+    }
+
+    public void deleteNotification(Integer id)
+    {
+        notificationRepository.deleteById(id);
+    }
+
+    public NotificationEntity enableDisableSwitch(NotificationRequest notificationRequest, String ids)
+    {
+        String[] id = ids.split("\\,");
+        notificationRequest.setNotificationId(Integer.parseInt(String.valueOf(id)));
+
     }
 }

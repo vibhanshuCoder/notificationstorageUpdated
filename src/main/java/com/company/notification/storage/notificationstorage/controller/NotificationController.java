@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.GeneratedValue;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/notification")
@@ -27,5 +28,16 @@ public class NotificationController {
     public Iterable<NotificationEntity> allNotification()
     {
         return notificationServices.allNotifications();
+    }
+    @DeleteMapping(value = "/deleteNotification", params = {"id"})
+    public void deleteNotification(@RequestParam("id")Integer id)
+    {
+        notificationServices.deleteNotification(id);
+    }
+
+    @PutMapping(value = "/trigger")
+    public NotificationEntity eableDisableSwitch(@RequestBody NotificationRequest notificationRequest, @RequestParam String id)
+    {
+        return notificationServices.enableDisableSwitch(notificationRequest,id);
     }
 }

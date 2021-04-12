@@ -12,5 +12,5 @@ public class UserResponse
     private String userRespoName;
     private String userRespoEmail;
     private String userRespoPhone;
-    private List<NotificationEntity> notificationEntityList;
+    private List<NotificationResponse> notificationResponse;
 }

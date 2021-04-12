@@ -47,7 +47,6 @@ public class UserEntity {
     private String userPhone;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "user",fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "user",fetch = FetchType.LAZY)
     private List<NotificationEntity> notificationEntityList;
-
 }

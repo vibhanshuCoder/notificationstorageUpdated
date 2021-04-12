@@ -6,15 +6,17 @@ import java.util.Date;
 @Data
 public class NotificationRequest {
 
+    private Integer notificationId;
+
     private Date notifyReqTime;
 
     NotificationEntity.NotificationType notificationReqType;
 
     private Integer userId;
 
-    private boolean isSent;
+    private boolean Sent;
 
-    private boolean isRepeat;
+    private boolean Repeat;
 
     private boolean enable;
 

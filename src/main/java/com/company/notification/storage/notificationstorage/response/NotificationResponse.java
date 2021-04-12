@@ -10,9 +10,9 @@ import java.util.Date;
 public class NotificationResponse
 {
     private Integer notificationId;
-    private boolean isSent;
+    private boolean Sent;
     NotificationEntity.NotificationType notificationType;
-    private boolean isRepeat;
+    private boolean Repeat;
     private boolean enable;
-    private Integer userId;
+
 }

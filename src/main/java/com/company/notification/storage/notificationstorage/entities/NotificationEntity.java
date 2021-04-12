@@ -50,18 +50,14 @@ public class NotificationEntity {
     private boolean enable;
     //    %boolean - isSent%
     @Column(name = "is_sent")
-    private boolean isSent;
+    private boolean sent;
     //    %boolean-isRepeate%
     @Column(name = "is_repeate")
-    private boolean isReapeat;
+    private boolean reapeat;
 
-    @ManyToOne
-    @JoinColumn(referencedColumnName = "user_id")
+    @ManyToOne(cascade = CascadeType.DETACH)
+    @JoinColumn(name = "user_id_info",referencedColumnName = "user_id")
     private UserEntity user;
-//    @ManyToOne
-//    @JoinColumn(name = "usermapped")
-//    private UserEntity userEntity;
-
 }
 
     /*
