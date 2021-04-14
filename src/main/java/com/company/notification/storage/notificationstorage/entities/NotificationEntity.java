@@ -1,7 +1,10 @@
 package com.company.notification.storage.notificationstorage.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
-import lombok.Setter;import javax.persistence.*;
+import lombok.Setter;
+import org.hibernate.annotations.DynamicUpdate;
+
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -20,6 +23,7 @@ import java.util.Date;
 @Getter
 @Setter
 @Entity
+@DynamicUpdate
 @Table(name = "notification")
 public class NotificationEntity {
 

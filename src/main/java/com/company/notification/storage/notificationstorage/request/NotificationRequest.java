@@ -14,9 +14,9 @@ public class NotificationRequest {
 
     private Integer userId;
 
-    private boolean Sent;
+    private boolean sent;
 
-    private boolean Repeat;
+    private boolean repeat;
 
     private boolean enable;
 

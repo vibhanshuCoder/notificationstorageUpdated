@@ -4,6 +4,7 @@ import com.company.notification.storage.notificationstorage.request.Notification
 import com.company.notification.storage.notificationstorage.response.NotificationResponse;
 import com.company.notification.storage.notificationstorage.services.NotificationServices;
 import com.company.notification.storage.notificationstorage.services.UserServices;
+import com.company.notification.storage.notificationstorage.update.NotificationUpdate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,8 +37,14 @@ public class NotificationController {
     }
 
     @PutMapping(value = "/trigger")
-    public NotificationEntity eableDisableSwitch(@RequestBody NotificationRequest notificationRequest, @RequestParam String id)
+    public void eableDisableSwitch(@RequestBody NotificationUpdate notificationUpdate)
     {
-        return notificationServices.enableDisableSwitch(notificationRequest,id);
+        notificationServices.enableDisableSwitch(notificationUpdate);
+    }
+
+    @PutMapping(value="/send_notification",params ={"id"})
+    public NotificationEntity send(@RequestParam("id") Integer id)
+    {
+        return notificationServices.send(id);
     }
 }
