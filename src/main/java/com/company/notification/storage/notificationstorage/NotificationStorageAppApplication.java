@@ -7,7 +7,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 @EnableSwagger2
-@RequestMapping
+
 public class NotificationStorageAppApplication
 {
     public static void main(String[] args)
